@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<script src="jquery-1.10.2.min.js"></script>
+<script src="jquery.mobile-1.3.2.min.js"></script>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyB9V1jRtArNHhq3xZOtu7WETuyuHbwLjgo" type="text/javascript"></script>
+    <script src="http://serverapi.arcgisonline.com/jsapi/gmaps/?v=1.6" type="text/javascript" ></script>
+
+    <script type="text/javascript">
+     var gmap = null;
+    var dynamicMap = null;
+
+    function initialize() {
+       //Load Google Maps
+      gmap = new GMap2(document.getElementById("map"));
+      var centerat = new GLatLng(38, -98);
+
+      gmap.addControl(new GLargeMapControl());
+      gmap.addControl(new GMapTypeControl());
+      gmap.setCenter(centerat, 5);
+      gmap.enableScrollWheelZoom();
+
+	  }
+
+    function moveToLocation(lat, lng){
+		var center = new google.maps.LatLng(lat, lng);
+		map.panTo(center);
+	}
+	$('#recenter').click( function() {
+		moveToLocation( -34, 150 );
+	});
+    </script>
+<style>
+#map {
+	height:100%;
+	width:100%
+    padding: 0;
+	margin:0;
+    position : absolute !important;       
+    right : 0;     
+    left : 0 !important; 
+	bottom : 0;     
+    top : 0 !important;     
+}
+</style>
+
+
+
+</head>
+<body  onload="initialize();">
+
+<div data-role="page" id="pageone">
+  <div data-role="header"  data-position="fixed">
+    <h1>Welcome To My Homepage</h1>
+	 <div data-role="navbar">
+      <ul>
+        <li><a href="#" data-icon="home">Home</a></li>
+        <li><a href="#pagetwo"    data-transition="slide" data-icon="arrow-r">Page Two</a></li>
+        <li><a href="#" data-icon="search" id="recenter">Search</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="content" id="map" >   
+	
+  </div>
+
+  <div data-role="footer"  data-position="fixed">
+    <h1>Footer Text</h1>
+  </div>
+</div> 
+<!-- Page 2 -->
+<div data-role="page" id="pagetwo">
+  <div data-role="header"  data-position="fixed">
+    <h1>Welcome To My Homepage</h1>
+  </div>
+
+  <div data-role="content">
+    <p>Goodbye!</p>
+    <a href="#pageone" data-transition="slide">My Page One</a>
+  </div>
+
+  <div data-role="footer"  data-position="fixed">
+    <h1>Footer Text</h1>
+  </div>
+</div> 
+
+</body>
+</html>
